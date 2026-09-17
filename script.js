@@ -1,0 +1,10 @@
+const $=s=>document.querySelector(s);
+const modal=$("#searchModal");
+const input=$("#searchInput"),results=$("#searchResults");
+window.addEventListener("scroll",()=>{const h=document.documentElement;const p=$("#progress");if(p){const d=h.scrollHeight-h.clientHeight;p.style.width=(d>0?h.scrollTop/d*100:0)+"%"}});
+const pages=[["HOME","MyshCraftとは / サーバー紹介","index.html"],["参加方法","Java版・統合版から参加する方法","join.html"],["運営募集","Moderator / Developer / Editor / Builder","recruit.html"],["運営チーム","Admin / Moderator / Developer / Editor / Builder","team.html"],["寄付","PayPay / Apple / Amazonギフトカード","donate.html"],["お知らせ","MyshCraftのお知らせ・更新情報","news.html"],["FAQ","MyshCraft よくある質問","faq.html"],["利用規約","MyshCraft 利用規約","rules.html"]];
+function render(q=""){if(!results)return;const x=q.trim().toLowerCase();const a=x?pages.filter(p=>p.join(" ").toLowerCase().includes(x)):pages;results.innerHTML=a.map(p=>`<a class="result" href="${p[2]}"><strong>${p[0]}</strong><small>${p[1]}</small></a>`).join("")||"<p style='color:#7d8ba0;font-size:11px'>一致するページがありません。</p>"}
+if($("#searchOpen")&&modal){$("#searchOpen").onclick=()=>{modal.classList.add("open");if(input){setTimeout(()=>input.focus(),50)}};modal.onclick=e=>{if(e.target.dataset.close)modal.classList.remove("open")};document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("open")})}
+if(input){render();input.oninput=e=>render(e.target.value)}
+const menu=$("#menuButton"),nav=$(".main-nav");
+if(menu&&nav){menu.setAttribute("aria-expanded","false");menu.onclick=()=>{const open=nav.classList.toggle("mobile-open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"};window.addEventListener("resize",()=>{if(window.innerWidth>1050){nav.classList.remove("mobile-open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}});document.addEventListener("click",e=>{if(window.innerWidth<=1050&&nav.classList.contains("mobile-open")&&!nav.contains(e.target)&&e.target!==menu){nav.classList.remove("mobile-open");menu.setAttribute("aria-expanded","false");menu.textContent="☰"}})}
