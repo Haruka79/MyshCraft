@@ -7,7 +7,9 @@ MyshCraft Official Website v4
 - 9. スマートフォン向けナビゲーションを改善
 - rules.html を今回アップロードされた利用規約の内容へ更新
 - MyshCraftアイコン、実際のMinecraftスキン、ワールド画像、ヒーロー動画を同梱
-- サーバー状態は「準備中」
+- サーバー状態は「公開中」
+- Java Edition: play.myshcraft.net:25565
+- Bedrock Edition: play.myshcraft.net / ポート 19132
 
 編集場所
 - 運営メンバー: team.html
